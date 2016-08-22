@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="30dp"
-        android:text="Restablecer Contraseña"
+        android:text="@string/resContraseña"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="28sp" />
 
@@ -27,7 +27,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Ingresa tu cuenta de correo Softtek:"
+            android:text="@string/correoSofttek"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/colorPrimaryDark"
-            android:hint="Correo"
+            android:hint="@string/correo"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
 
@@ -52,7 +52,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="onClick"
             android:padding="10dp"
-            android:text="Enviar"
+            android:text="@string/enviar"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
@@ -64,7 +64,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:onClick="onClick"
-            android:text="Ya tengo un código"
+            android:text="@string/tengoCod"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
     </LinearLayout>
@@ -84,7 +84,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Ingresa el código enviado a tu cuenta de correo:"
+            android:text="@string/ingresaCodigo"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
@@ -95,7 +95,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/colorPrimaryDark"
-            android:hint="Código"
+            android:hint="@string/codigo"
             android:inputType="number"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
@@ -109,7 +109,7 @@
             android:background="@color/colorPrimaryDark"
             android:onClick="onClick"
             android:padding="10dp"
-            android:text="Validar"
+            android:text="@string/validar"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
