@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Survapp.iml" filepath="$PROJECT_DIR$/Survapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SofttekSurvapp.iml" filepath="$PROJECT_DIR$/SofttekSurvapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
