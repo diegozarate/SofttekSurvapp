@@ -22,7 +22,7 @@
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@color/colorPrimaryDark"
-            android:hint="Correo"
+            android:hint="@string/correo"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
 
@@ -31,7 +31,7 @@
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@color/colorPrimaryDark"
-            android:hint="Contraseña"
+            android:hint="@string/contraseña"
             android:inputType="textPassword"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
@@ -53,10 +53,10 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimaryDark"
             android:padding="10dp"
-            android:text="Entrar"
+            android:text="@string/entrar"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
-    </LinearLayout>
+   </LinearLayout>
 
 
     <TextView

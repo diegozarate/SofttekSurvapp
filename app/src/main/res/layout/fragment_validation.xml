@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="30dp"
-        android:text="Validar Cuenta"
+        android:text="@string/validarCuenta"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="40sp" />
 
@@ -19,7 +19,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="Se ha enviado un código a tu cuenta de correo"
+        android:text="@string/EnvioCodigo"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
 
@@ -30,7 +30,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
-        android:hint="Código"
+        android:hint="@string/codigo"
         android:inputType="number"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white" />
@@ -44,7 +44,7 @@
         android:background="@color/colorPrimaryDark"
         android:onClick="onClick"
         android:padding="10dp"
-        android:text="Validar"
+        android:text="@string/validar"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 </LinearLayout>

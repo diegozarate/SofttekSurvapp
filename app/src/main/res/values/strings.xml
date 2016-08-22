@@ -3,4 +3,23 @@
     <string name="action_settings">Settings</string>
     <string name="register"><u>Registro</u></string>
     <string name="recover_pass"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="enviar"><u>ENVIAR</u></string>
+    <string name="contraseña"><u>Contraseña</u></string>
+    <string name="correo"><u>Correo</u></string>
+    <string name="validar"><u>VALIDAR</u></string>
+    <string name="codigo"><u>Código</u></string>
+    <string name="envioCodigo"><u>Se ha enviado un código a tu cuenta de correo</u></string>
+    <string name="cambiar"><u>CAMBIAR</u></string>
+    <string name="validarCuenta"><u>Validar Cuenta</u></string>
+    <string name="confContraseña"><u>Confirma Contraseña</u></string>
+    <string name="nuevaContraseña"><u>Nueva Contraseña</u></string>
+    <string name="EnvioCodigo"><u>Se ha enviado un código a tu cuenta de correo</u></string>
+    <string name="resContraseña"><u>Restablecer Contraseña</u></string>
+    <string name="ingresaCodigo"><u>Ingresa el código enviado a tu cuenta de correo</u></string>
+    <string name="tengoCod"><u>Ya tengo un código</u></string>
+    <string name="correoSofttek"><u>Ingresa tu cuenta de correo Softtek:</u></string>
+    <string name="entrar"><u>ENTRAR</u></string>
+
+
+
 </resources>
