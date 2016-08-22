@@ -20,6 +20,7 @@ public class MainController {
     public void onClickController(ViewPager pager, View btnFrom, Context ctx) {
         LinearLayout layout;
         LinearLayout layout2;
+        pref = new SessionData(ctx);
         switch (btnFrom.getId()) {
             //Registration actions
             case R.id.btnRegister:
@@ -47,6 +48,8 @@ public class MainController {
                     case Constants.REGISTER_VALIDATED:
                         pager.setCurrentItem(Constants.F_VALIDATE);
                         generateCode(ctx);
+                        Toast.makeText(ctx, "Codigo: " + pref.getValidationCode(),
+                                Toast.LENGTH_LONG).show();
                         ///////////////////////////////////Insert code
                         break;
                 }

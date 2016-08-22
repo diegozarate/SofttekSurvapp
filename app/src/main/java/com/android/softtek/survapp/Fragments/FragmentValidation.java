@@ -18,7 +18,6 @@ public class FragmentValidation extends Fragment {
         View view = inflater.inflate(R.layout.fragment_validation, container, false);
         EditText et = (EditText) view.findViewById(R.id.etCode);
         SessionData pref = new SessionData(getContext());
-        //et.setText(pref.getValidationCode());
         return view;
     }
 }
