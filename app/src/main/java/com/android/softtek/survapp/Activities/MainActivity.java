@@ -2,10 +2,11 @@ package com.android.softtek.survapp.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
+
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewParentCompat;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -26,6 +27,14 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         mPager = (ViewPager) findViewById(R.id.pager);
+
+        mPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
         FragmentMainAdapter adapter = new FragmentMainAdapter(getSupportFragmentManager());
         mPager.setAdapter(adapter);
         mPager.setCurrentItem(Constants.F_LOGIN);

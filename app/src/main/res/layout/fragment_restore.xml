@@ -11,7 +11,7 @@
         android:layout_margin="30dp"
         android:text="Restablecer Contraseña"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp" />
+        android:textSize="28sp" />
 
     <LinearLayout
         android:id="@+id/layout_correo"
@@ -33,6 +33,7 @@
 
 
         <EditText
+            android:id="@+id/etRestoreMail"
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
@@ -88,12 +89,14 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/etCodeRestore"
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@color/colorPrimaryDark"
             android:hint="Código"
+            android:inputType="number"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
 

@@ -18,15 +18,17 @@ public class MainController {
     private SessionData pref;
 
     public void onClickController(ViewPager pager, View btnFrom, Context ctx) {
-        LinearLayout layout;
-        LinearLayout layout2;
+        LinearLayout layout, layout2;
+        EditText et1, et2;
         pref = new SessionData(ctx);
         switch (btnFrom.getId()) {
             //Registration actions
             case R.id.btnRegister:
+                //Send to Registration View
                 pager.setCurrentItem(Constants.F_REGISTER);
                 break;
             case R.id.btnSubmit:
+                //Check the Registration Data
                 layout = (LinearLayout) btnFrom.getParent();
                 switch (validateRegister(layout)) {
                     case Constants.EMPTY_SPACES:
@@ -48,18 +50,23 @@ public class MainController {
                     case Constants.REGISTER_VALIDATED:
                         pager.setCurrentItem(Constants.F_VALIDATE);
                         generateCode(ctx);
+                        ///////Remove
                         Toast.makeText(ctx, "Codigo: " + pref.getValidationCode(),
                                 Toast.LENGTH_LONG).show();
                         ///////////////////////////////////Insert code
+                        //WS to send user info to store in BD
+                        // send validation code via email
                         break;
                 }
                 break;
             case R.id.btnValidate:
+                //Account Validate
                 layout = (LinearLayout) btnFrom.getParent();
-                EditText et = (EditText) layout.findViewById(R.id.etCode);
-                if (!et.getText().toString().equals("")) {
-                    if (validateCodes(Integer.valueOf(et.getText().toString()), ctx))
+                et1 = (EditText) layout.findViewById(R.id.etCode);
+                if (!et1.getText().toString().equals("")) {
+                    if (validateCodes(Integer.valueOf(et1.getText().toString()), ctx))
                         pager.setCurrentItem(Constants.F_LOGIN);
+                        ////Insert code send validation status to WS
                     else
                         Toast.makeText(ctx, Constants.CODE_VALIDATION_MESSAGE,
                                 Toast.LENGTH_LONG).show();
@@ -67,32 +74,82 @@ public class MainController {
                 break;
             // Restore Pasword actions
             case R.id.tvRestore:
+                //Send to Restore View
                 pager.setCurrentItem(Constants.F_RESTORE);
                 break;
             case R.id.btnSendCode:
+                //Send Validation code
                 layout = (LinearLayout) btnFrom.getParent();
-                layout2 = (LinearLayout) layout.findViewById(R.id.layout_correo);
-                layout2.setVisibility(View.GONE);
-                layout2 = (LinearLayout) layout.findViewById(R.id.layout_codigo);
-                layout2.setVisibility(View.VISIBLE);
-                //////////////////////////Insert code
+                layout = (LinearLayout) layout.getParent();
+
+                et1 = (EditText) layout.findViewById(R.id.etRestoreMail);
+                if (!isEmpty(et1)) {
+                    if (validateMail(et1.getText().toString())) {
+                        generateCode(ctx);
+
+                        ///////Remove
+                        Toast.makeText(ctx, "Codigo: " + pref.getValidationCode(),
+                                Toast.LENGTH_LONG).show();
+                        //////////
+
+                        ////Launch WS to send Mail and code
+
+                        layout2 = (LinearLayout) layout.findViewById(R.id.layout_correo);
+                        layout2.setVisibility(View.GONE);
+                        layout2 = (LinearLayout) layout.findViewById(R.id.layout_codigo);
+                        layout2.setVisibility(View.VISIBLE);
+                    } else {
+                        Toast.makeText(ctx, "El email no es correcto" + pref.getValidationCode(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(layout.getContext(), Constants.EMPTY_MESSAGE,
+                            Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.tvHaveCode:
                 layout = (LinearLayout) btnFrom.getParent();
+                layout = (LinearLayout) layout.getParent();
                 layout2 = (LinearLayout) layout.findViewById(R.id.layout_correo);
                 layout2.setVisibility(View.GONE);
                 layout2 = (LinearLayout) layout.findViewById(R.id.layout_codigo);
                 layout2.setVisibility(View.VISIBLE);
+                ///////Remove
+                Toast.makeText(ctx, "Codigo: " + pref.getValidationCode(),
+                        Toast.LENGTH_LONG).show();
+                //////////
                 break;
             case R.id.btnValidateRestore:
-                pager.setCurrentItem(Constants.F_SET_PASSWORD);
-                /////////////////////////Insert code
+                layout = (LinearLayout) btnFrom.getParent();
+                et1 = (EditText) layout.findViewById(R.id.etCodeRestore);
+                if (!et1.getText().toString().equals("")) {
+                    if (validateCodes(Integer.valueOf(et1.getText().toString()), ctx))
+                        pager.setCurrentItem(Constants.F_SET_PASSWORD);
+                    else
+                        Toast.makeText(ctx, Constants.CODE_VALIDATION_MESSAGE,
+                                Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.btnSetPass:
-                pager.setCurrentItem(Constants.F_LOGIN);
-                ///////////////////////7/Insert code
+                layout = (LinearLayout) btnFrom.getParent();
+                et1 = (EditText) layout.findViewById(R.id.etSetPass1);
+                et2 = (EditText) layout.findViewById(R.id.etSetPass1);
+
+                if (!isEmpty(et1) && !isEmpty(et2)) {
+                    String pass1 = et1.getText().toString().trim();
+                    String pass2 = et2.getText().toString().trim();
+                    if (validatePassword(pass1) && comparePasswords(pass1, pass2)) {
+                        pager.setCurrentItem(Constants.F_LOGIN);
+
+                        //Insert code, send new password to WS to update
+                    } else {
+                        Toast.makeText(ctx, Constants.PASSWORD_MESSAGE2,
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
                 break;
         }
+
     }
 
     public int validateRegister(View v) {

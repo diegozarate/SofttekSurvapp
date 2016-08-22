@@ -20,7 +20,7 @@ public class FragmentMainAdapter extends android.support.v4.app.FragmentPagerAda
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Override
