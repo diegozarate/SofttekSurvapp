@@ -133,7 +133,7 @@ public class MainController {
             case R.id.btnSetPass:
                 layout = (LinearLayout) btnFrom.getParent();
                 et1 = (EditText) layout.findViewById(R.id.etSetPass1);
-                et2 = (EditText) layout.findViewById(R.id.etSetPass1);
+                et2 = (EditText) layout.findViewById(R.id.etSetPass2);
 
                 if (!isEmpty(et1) && !isEmpty(et2)) {
                     String pass1 = et1.getText().toString().trim();
