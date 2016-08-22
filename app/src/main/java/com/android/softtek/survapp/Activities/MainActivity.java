@@ -33,6 +33,6 @@ public class MainActivity extends FragmentActivity {
 
     public void onClick(View v) {
         MainController controller = new MainController();
-        controller.onClickController(mPager, v);
+        controller.onClickController(mPager, v, this);
     }
 }

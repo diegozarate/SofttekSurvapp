@@ -17,62 +17,69 @@ public class MainController {
 
     private SessionData pref;
 
-    public void onClickController(ViewPager pager, View view) {
+    public void onClickController(ViewPager pager, View btnFrom, Context ctx) {
         LinearLayout layout;
-        switch (view.getId()) {
+        LinearLayout layout2;
+        switch (btnFrom.getId()) {
             //Registration actions
             case R.id.btnRegister:
                 pager.setCurrentItem(Constants.F_REGISTER);
                 break;
             case R.id.btnSubmit:
-                switch (validateRegister(view)) {
+                layout = (LinearLayout) btnFrom.getParent();
+                switch (validateRegister(layout)) {
                     case Constants.EMPTY_SPACES:
-                        Toast.makeText(view.getContext(), Constants.EMPTY_MESSAGE,
+                        Toast.makeText(layout.getContext(), Constants.EMPTY_MESSAGE,
                                 Toast.LENGTH_LONG).show();
                         break;
                     case Constants.EMAIL_FAIL:
-                        Toast.makeText(view.getContext(), Constants.EMAIL_MESSAGE,
+                        Toast.makeText(ctx, Constants.EMAIL_MESSAGE,
                                 Toast.LENGTH_LONG).show();
                         break;
                     case Constants.PASSWORD_LENGHT:
-                        Toast.makeText(view.getContext(), Constants.PASSWORD_MESSAGE,
+                        Toast.makeText(ctx, Constants.PASSWORD_MESSAGE,
                                 Toast.LENGTH_LONG).show();
                         break;
                     case Constants.PASSWORD_FAIL:
-                        Toast.makeText(view.getContext(), Constants.PASSWORD_MESSAGE2,
+                        Toast.makeText(ctx, Constants.PASSWORD_MESSAGE2,
                                 Toast.LENGTH_LONG).show();
                         break;
                     case Constants.REGISTER_VALIDATED:
                         pager.setCurrentItem(Constants.F_VALIDATE);
-                        generateCode(view.getContext());
+                        generateCode(ctx);
                         ///////////////////////////////////Insert code
                         break;
                 }
                 break;
             case R.id.btnValidate:
-                EditText et = (EditText) view.findViewById(R.id.etCode);
-                if (validateCodes(Integer.valueOf(et.getText().toString())))
-                    pager.setCurrentItem(Constants.F_LOGIN);
-                else
-                    Toast.makeText(view.getContext(), Constants.CODE_VALIDATION_MESSAGE,
-                            Toast.LENGTH_LONG).show();
+                layout = (LinearLayout) btnFrom.getParent();
+                EditText et = (EditText) layout.findViewById(R.id.etCode);
+                if (!et.getText().toString().equals("")) {
+                    if (validateCodes(Integer.valueOf(et.getText().toString()), ctx))
+                        pager.setCurrentItem(Constants.F_LOGIN);
+                    else
+                        Toast.makeText(ctx, Constants.CODE_VALIDATION_MESSAGE,
+                                Toast.LENGTH_LONG).show();
+                }
                 break;
             // Restore Pasword actions
             case R.id.tvRestore:
                 pager.setCurrentItem(Constants.F_RESTORE);
                 break;
             case R.id.btnSendCode:
-                layout = (LinearLayout) view.findViewById(R.id.layout_correo);
-                layout.setVisibility(View.GONE);
-                layout = (LinearLayout) view.findViewById(R.id.layout_codigo);
-                layout.setVisibility(View.VISIBLE);
+                layout = (LinearLayout) btnFrom.getParent();
+                layout2 = (LinearLayout) layout.findViewById(R.id.layout_correo);
+                layout2.setVisibility(View.GONE);
+                layout2 = (LinearLayout) layout.findViewById(R.id.layout_codigo);
+                layout2.setVisibility(View.VISIBLE);
                 //////////////////////////Insert code
                 break;
             case R.id.tvHaveCode:
-                layout = (LinearLayout) view.findViewById(R.id.layout_correo);
-                layout.setVisibility(View.GONE);
-                layout = (LinearLayout) view.findViewById(R.id.layout_codigo);
-                layout.setVisibility(View.VISIBLE);
+                layout = (LinearLayout) btnFrom.getParent();
+                layout2 = (LinearLayout) layout.findViewById(R.id.layout_correo);
+                layout2.setVisibility(View.GONE);
+                layout2 = (LinearLayout) layout.findViewById(R.id.layout_codigo);
+                layout2.setVisibility(View.VISIBLE);
                 break;
             case R.id.btnValidateRestore:
                 pager.setCurrentItem(Constants.F_SET_PASSWORD);
@@ -133,7 +140,7 @@ public class MainController {
     }
 
     public boolean validatePassword(String pass) {
-        return 6 >= pass.length();
+        return 6 <= pass.length();
     }
 
     public void restartRegister(EditText et1, EditText et2, EditText et3, int code) {
@@ -149,7 +156,7 @@ public class MainController {
     }
 
     public boolean isEmpty(EditText et) {
-        return et != null   && et.getText().toString().trim().length() == 0;
+        return et != null && et.getText().toString().trim().length() == 0;
     }
 
     public void generateCode(Context ctx) {
@@ -159,7 +166,8 @@ public class MainController {
         pref.setValidationCode(randomNum);
     }
 
-    public boolean validateCodes(int code) {
+    public boolean validateCodes(int code, Context ctx) {
+        pref = new SessionData(ctx);
         return code == pref.getValidationCode();
     }
 }

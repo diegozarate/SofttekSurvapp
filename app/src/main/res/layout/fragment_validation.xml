@@ -31,6 +31,7 @@
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
         android:hint="Código"
+        android:inputType="number"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white" />
 
@@ -38,10 +39,10 @@
         android:id="@+id/btnValidate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
+        android:onClick="onClick"
         android:padding="10dp"
         android:text="Validar"
         android:textColor="@android:color/white"
