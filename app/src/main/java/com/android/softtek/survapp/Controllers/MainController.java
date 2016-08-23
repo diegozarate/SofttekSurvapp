@@ -1,12 +1,14 @@
 package com.android.softtek.survapp.Controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.softtek.survapp.Activities.HomeActivity;
 import com.android.softtek.survapp.R;
 import com.android.softtek.survapp.Util.Constants;
 import com.android.softtek.survapp.Util.SessionData;
@@ -22,6 +24,9 @@ public class MainController {
         EditText et1, et2;
         pref = new SessionData(ctx);
         switch (btnFrom.getId()) {
+            case R.id.btnLogin:
+                ctx.startActivity(new Intent(ctx, HomeActivity.class));
+                break;
             //Registration actions
             case R.id.btnRegister:
                 //Send to Registration View

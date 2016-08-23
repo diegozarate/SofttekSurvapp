@@ -7,13 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.android.softtek.survapp.Controllers.MainController;
 import com.android.softtek.survapp.R;
 import com.android.softtek.survapp.Util.Constants;
-import com.android.softtek.survapp.Util.FragmentMainAdapter;
+import com.android.softtek.survapp.Adapters.FragmentMainAdapter;
 
 public class MainActivity extends FragmentActivity {
 
@@ -41,5 +39,13 @@ public class MainActivity extends FragmentActivity {
     public void onClick(View v) {
         MainController controller = new MainController();
         controller.onClickController(mPager, v, this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mPager.getCurrentItem() == 0)
+            finish();
+        else
+            mPager.setCurrentItem(0);
     }
 }

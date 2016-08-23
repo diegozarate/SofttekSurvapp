@@ -2,21 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_margin="10dp"
+    android:layout_marginBottom="15dp"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/tvSurveyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:text="Encuesta fulanita"
         android:textColor="@android:color/holo_blue_dark"
-        android:gravity="center_vertical"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
-    <ImageView
-        android:id="@+id/icon"
+    <TextView
+        android:id="@+id/tvEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
+        android:layout_margin="5dp"
+        android:text="fecha de la encuesta"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
 </LinearLayout>

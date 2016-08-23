@@ -34,4 +34,16 @@
         <item>@drawable/calendar_icon</item>
         <item>@drawable/log_icon</item>
     </array>
+
+    <!-- Test Strings -->
+    <string-array name="survey_test">
+        <item>All Hands</item>
+        <item>Curso QlikView</item>
+        <item>Taller RunLean</item>
+    </string-array>
+    <string-array name="survey_date_test">
+        <item>24 de Agosto 2016</item>
+        <item>29 de Agosto 2016</item>
+        <item>31 de Agosto 2016</item>
+    </string-array>
 </resources>

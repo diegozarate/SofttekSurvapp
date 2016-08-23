@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 
 import com.android.softtek.survapp.R;
 
-/**
- * Created by diego.zarate on 8/17/2016.
- */
 public class FragmentRegister extends Fragment {
 
     @Override
