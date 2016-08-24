@@ -6,12 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.softtek.survapp.Activities.MainActivity;
 import com.android.softtek.survapp.Fragments.FragmentValidation;
 import com.android.softtek.survapp.Models.DrawerItem;
+import com.android.softtek.survapp.Models.Question;
 import com.android.softtek.survapp.Models.SurveyItem;
 import com.android.softtek.survapp.R;
 import com.android.softtek.survapp.Util.SessionData;
@@ -29,6 +34,26 @@ public class HomeController {
             DrawerItem item = new DrawerItem();
             item.setTitle(titles[i]);
             item.setIcon(icons[i]);
+
+            items.add(item);
+        }
+        return items;
+    }
+
+    //Test Method
+    public ArrayList<Question> getQuestionsList(Context ctx) {
+        ArrayList<Question> items = new ArrayList<Question>();
+        String[] preguntas = ctx.getResources().getStringArray(R.array.questions_test);
+        String[] opciones = ctx.getResources().getStringArray(R.array.opciones_test);
+        int[] tipos = ctx.getResources().getIntArray(R.array.tipos_prueba);
+
+        for (int i = 0; i < preguntas.length; i++) {
+            Question item = new Question();
+            item.setQuestion(preguntas[i]);
+            item.setTipo(tipos[i]);
+            if (tipos[i] == 2 || tipos[i] == 3) {
+                item.setOpciones(opciones);
+            }
 
             items.add(item);
         }
@@ -68,6 +93,24 @@ public class HomeController {
                 Toast.makeText(ctx, day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void createRadioButtons(View view, String[] options) {
+        RadioButton[] buttons = new RadioButton[5];
+        RadioGroup rg = (RadioGroup) view.findViewById(R.id.radioG);
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i] = new RadioButton(view.getContext());
+            buttons[i].setText(options[i]);
+            buttons[i].setId(i);
+
+            rg.addView(buttons[i]);
+        }
+    }
+
+    public ArrayAdapter<String> getAdapterSpinner(Context ctx) {
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(ctx, android.R.layout.simple_spinner_item, ctx.getResources().getStringArray(R.array.opciones_test));
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return spinnerArrayAdapter;
     }
 
     public void logOut(Context ctx) {

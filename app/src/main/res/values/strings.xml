@@ -46,4 +46,24 @@
         <item>29 de Agosto 2016</item>
         <item>31 de Agosto 2016</item>
     </string-array>
+
+    <string-array name="questions_test">
+        <item>Pregunta de prueba 1 Diego</item>
+        <item>Pregunta de prueba 2 Fernanda</item>
+        <item>Pregunta de prueba 3 Fatima</item>
+        <item>Pregunta de prueba 4 Tsanda</item>
+    </string-array>
+    <integer-array name="tipos_prueba">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <string-array name="opciones_test">
+        <item>1 Diego</item>
+        <item>2 Fernanda</item>
+        <item>3 Fatima</item>
+        <item>4 Tsanda</item>
+        <item>5 Aurora</item>
+    </string-array>
 </resources>
